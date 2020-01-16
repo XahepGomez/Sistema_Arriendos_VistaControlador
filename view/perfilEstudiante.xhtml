@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<h:body>
+
+	<style type="text/css">
+.ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell
+	{
+	text-align: center;
+}
+
+.customPanelGrid .ui-panelgrid-content {
+	align-items: center;
+}
+</style>
+
+	<h:form id="form">
+		<p:growl id="msgs" />
+
+		<p:outputPanel id="estudiantes">
+			<div align="center">
+			<h:outputText value="DATOS PERSONALES" />
+
+
+				<p:panelGrid columns="2">
+					<f:facet name="header">
+						<img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" style="width:40%"></img>
+					</f:facet>
+
+					<h:outputText value="Tu nombre:" />
+					<h:outputText value="#{controlador.estudiante.correoEstudiante}" />
+
+					<h:outputText value="Tu username:" />
+					<h:outputText value="#{controlador.estudiante.username}" />
+
+					<h:outputText value="Tu edad:" />
+					<h:outputText value="#{controlador.estudiante.edad}" />
+
+					<h:outputText value="Tu género" />
+					<h:outputText value="#{controlador.estudiante.genero}" />
+					
+					<h:outputText value="Tu contacto" />
+					<h:outputText value="#{controlador.estudiante.contacto}" />
+					
+					<h:outputText value="Tu idioma" />
+					<h:outputText value="#{controlador.estudiante.idioma}" />
+					
+					<h:outputText value="Tu pais" />
+					<h:outputText value="#{controlador.estudiante.pais}" />
+				</p:panelGrid>
+
+
+				
+				<p></p>
+
+				<p:dataTable value="#{controlador.viviendas}" var="vivi"
+					id="viviendasTable">
+
+					<p:column headerText="Codigo">
+						<h:outputText value="#{vivi.codigo_Vivienda}" />
+					</p:column>
+
+					<p:column headerText="Dirección exacta">
+						<h:outputText value="#{vivi.direccionExacta}" />
+					</p:column>
+
+					<p:column headerText="Descripcion">
+						<h:outputText value="#{vivi.descripcion}" />
+					</p:column>
+
+					<p:column headerText="Precio">
+						<h:outputText value="#{vivi.precio}" />
+					</p:column>
+					
+					<p:column headerText="Dueño">
+						<h:outputText value="#{vivi.dueño.correoDueño}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+
+				<p></p>
+				<p:commandButton id="btn_agg" value="Volver al perfil"
+					action="irRegistroVivienda"></p:commandButton>
+			</div>
+		</p:outputPanel>
+
+
+	</h:form>
+</h:body>
+</html>

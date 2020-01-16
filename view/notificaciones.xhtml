@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:outputLabel id="idMensaje" for="button"
+			value="Ingrese la fecha de entrada: " />
+		<p:calendar id="button" showOn="button"
+			value="#{controlador.solicitud.fechaEntrada}" />
+		<p></p>
+		<p:outputLabel id="idMensaje2" for="buttond"
+			value="Ingrese la fecha de salida: " />
+		<p:calendar id="buttond" showOn="button"
+			value="#{controlador.solicitud.fechaSalida}" />
+		<p></p>
+		<p:commandButton id="btn_enviar" value="Enviar"
+			action="#{controlador.crearSolicitud_web()}">
+		</p:commandButton>
+		<p:commandButton id="btn_agg" value="Volver al perfil"
+			action="irRegistroVivienda"></p:commandButton>
+	</h:form>
+
+</h:body>
+</html>

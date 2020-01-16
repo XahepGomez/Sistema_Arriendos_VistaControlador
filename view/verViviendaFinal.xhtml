@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<h:body>
+
+	<script type="text/javascript"
+		src="https://maps.google.com/maps/api/js?key=AIzaSyBy2y5EZnZbwjun3cMj8TnjtqVf5t-hanA"></script>
+
+
+	<h:form id="form">
+
+		<p:growl id="msgs" />
+		<p:outputPanel id="viviendas">
+			<p:dataTable value="#{controlador.viviendas}" var="vivi"
+				id="viviendasTable">
+
+				<p:column headerText="Codigo vivienda">
+					<h:outputText value="#{vivi.codigo_Vivienda}" id="codigo" />
+				</p:column>
+
+				<p:column headerText="Descripcion">
+					<h:outputText value="#{vivi.descripcion}" />
+				</p:column>
+
+				<p:column headerText="Reglas">
+					<h:outputText value="#{vivi.reglas}" />
+				</p:column>
+
+				<p:column headerText="Accion">
+					<p:commandButton id="btn_vermas" value="Ver ubicación"
+						onclick="verUbicacion()">
+					</p:commandButton>
+					<p></p>
+					<p:commandButton id="btn_notificar" value="Notificar"
+						action="#{controlador.crearNotificar_Web(vivi)}">
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+		</p:outputPanel>
+
+	</h:form>
+
+	<p></p>
+	<div id="mapa">
+		<p:gmap center="7.062026, -73.091349" zoom="15" type="ROADMAP"
+			style="width:100%;height:400px"
+			model="#{controlador.Mostrar()}"/>
+	</div>
+
+	<p></p>
+	<p:commandButton id="btn_QuitarMapa" value="Quitar mapa"
+		onclick="quitarMapa()">
+	</p:commandButton>
+
+	<script type="text/javascript">
+		function verUbicacion() {
+			document.getElementById('mapa').style.display = '';
+			document.getElementById('btn_QuitarMapa').style.display = '';
+		}
+
+		function quitarMapa() {
+			document.getElementById('mapa').style.display = 'none';
+			document.getElementById('btn_QuitarMapa').style.display = 'none';
+		}
+	</script>
+
+
+
+</h:body>
+</html>

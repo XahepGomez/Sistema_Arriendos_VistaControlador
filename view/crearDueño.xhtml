@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<h:body>
+
+	<h:form id="form">
+		<p:growl id="msgs" />
+		<div align="center">
+			<h:panelGrid columns="1">
+				<p:panel header="Crear dueños" style="margin-bottom:20px">
+
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<h:outputLabel value="Correo :" for="txt_correo"></h:outputLabel>
+						<p:inputText id="txt_correo"
+							value="#{controlador.dueño.correoDueño}"
+							required="true" />
+
+						<h:outputLabel value="Username (Max. 15 caracteres) :" for="txt_nombre"></h:outputLabel>
+						<p:inputText id="txt_nombre"
+							value="#{controlador.dueño.username}"
+							required="true" />
+
+						<h:outputLabel value="Contraseña :" for="txt_contraseña"></h:outputLabel>
+						<p:inputText id="txt_contraseña"
+							value="#{controlador.dueño.contraseña}"
+							required="true" />
+							
+						
+						<h:outputLabel value="Idioma :" for="txt_idioma"></h:outputLabel>
+						<p:inputText id="txt_idioma"
+							value="#{controlador.dueño.idioma}"
+							required="true" />
+							
+							
+						<h:outputLabel value="Contacto :" for="txt_contacto"></h:outputLabel>
+						<p:inputText id="txt_contacto"
+							value="#{controlador.dueño.contacto}"
+							required="true" />
+						
+
+					</h:panelGrid>
+					<div align="center">
+						<h:panelGrid columns="2">
+							<p:commandButton id="btn_add" value="Agregar" update="form"
+								action="#{controlador.crearDueño_Web()}">
+							</p:commandButton>
+						</h:panelGrid>
+					</div>
+				</p:panel>
+			</h:panelGrid>
+		</div>
+		
+	</h:form>
+
+
+	<div align="center">
+
+		<h:form id="dsa">
+
+			<p:commandButton id="btn_cerrar" value="Volver al inicio"
+				action="#{controlador.irRegistroEstudiante()}"></p:commandButton>
+
+		</h:form>
+
+	</div>
+
+
+</h:body>
+</html>

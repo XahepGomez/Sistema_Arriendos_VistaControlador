@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<div align="center">
+
+
+		<h:form id="form">
+			<p></p>
+			<p:outputLabel value="Bienvenido #{controlador.dueño.username}"></p:outputLabel>
+			<p></p>
+			<img src="https://i.ibb.co/9gz0sWd/Captura.png" style="width:30%"></img>
+			<p></p>
+			<p:commandButton id="btn_perfil" value="Perfil" action="#{controlador.consultarViviendasDueño()}"></p:commandButton>
+			<p></p>
+			<p:commandButton id="btn_agg" value="Agregar vivienda"
+				action="irRegistroVivienda"></p:commandButton>
+			<p></p>
+			<p:commandButton id="btn_noti" value="Notificaciones"
+				action="#{controlador.consultarNotificacionesDueño()}"></p:commandButton>
+			<p></p>
+			<p:commandButton id="btn_cerrar" value="Cerrar sesión"
+			action="#{controlador.cerrarSesion()}"></p:commandButton>
+		</h:form>
+
+
+	</div>
+
+</h:body>
+</html>

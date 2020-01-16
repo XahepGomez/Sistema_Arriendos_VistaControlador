@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<h:body>
+
+	<h:form id="form">
+
+		<p:growl id="msgs" />
+		<p:outputPanel id="solicitudes">
+			<p:dataTable value="#{controlador.solicitudes}" var="soli"
+				id="solicitudesTable">
+
+				<p:column headerText="Datos de la vivienda">
+					<h:outputText
+						value="Código vivienda = #{soli.vivienda.codigo_Vivienda}" />
+					<p></p>
+					<h:outputText
+						value="Dirección exacta = #{soli.vivienda.direccionExacta}" />
+					<p></p>
+					<h:outputText value="Precio = #{soli.vivienda.precio}" />
+					<p></p>
+					<h:outputText value="Estado de la solicitud = #{soli.estado}" />
+				</p:column>
+
+				<p:column headerText="Datos del estudiante">
+					<h:outputText value="Correo = #{soli.estudiante.correoEstudiante}" />
+					<p></p>
+					<h:outputText value="Contacto = #{soli.estudiante.contacto}" />
+					<p></p>
+					<h:outputText value="Pais = #{soli.estudiante.pais}" />
+					<p></p>
+					<h:outputText value="Username = #{soli.estudiante.username}" />
+				</p:column>
+
+
+				<p:column headerText="Accion">
+					<p:commandButton id="btn_vermas" value="Aceptar"
+						action="#{controlador.estadoSolicitudAceptar(soli)}">
+					</p:commandButton>
+					<p></p>
+					<p:commandButton id="btn_notificar" value="Rechazar"
+						action="#{controlador.estadoSolicitudRechazar(soli)}">
+					</p:commandButton>
+				</p:column>
+				
+			</p:dataTable>
+			
+			<div align="center">
+				<p></p>
+				<p:commandButton id="btn_agg" value="Volver al perfil"
+					action="irRegistroVivienda"></p:commandButton>
+			</div>
+			
+		</p:outputPanel>
+
+	</h:form>
+
+
+
+</h:body>
+</html>

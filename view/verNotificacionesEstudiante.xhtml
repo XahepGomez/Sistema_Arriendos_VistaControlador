@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<h:body>
+
+	<h:form id="form">
+
+		<p:growl id="msgs" />
+		<p:outputPanel id="solicitudes">
+			<p:dataTable value="#{controlador.solicitudes}" var="soli"
+				id="solicitudesTable">
+
+				<p:column headerText="Datos de la vivienda">
+					<h:outputText
+						value="Código vivienda = #{soli.vivienda.codigo_Vivienda}" />
+					<p></p>
+					<h:outputText
+						value="Dirección exacta = #{soli.vivienda.direccionExacta}" />
+					<p></p>
+					<h:outputText value="Precio = #{soli.vivienda.precio}" />
+					<p></p>
+					<h:outputText value="Estado de la solicitud = #{soli.estado}" />
+				</p:column>
+
+				<p:column headerText="Datos del dueño">
+					<h:outputText value="Correo = #{soli.vivienda.dueño.correoDueño}" />
+					<p></p>
+					<h:outputText value="Contacto = #{soli.vivienda.dueño.contacto}" />
+					<p></p>
+					<h:outputText value="Username = #{soli.vivienda.dueño.username}" />
+				</p:column>
+				
+				
+				<p:column headerText="Accion">
+					<p:commandLink value="Eliminar solicitud" update=":form:solicitudes"
+						process=":form:solicitudes"
+						action="#{controlador.eliminarSolicitud(soli)}">
+						<p:confirm header="Confirmacion"
+							message="Esta seguro de eliminar la solicitud (Al dueño también se le eliminará la solicitud)"
+							icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Si" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+			<div align="center">
+				<p></p>
+				<p:commandButton id="btn_agg" value="Volver al perfil"
+					action="irRegistroVivienda"></p:commandButton>
+			</div>
+
+		</p:outputPanel>
+
+	</h:form>
+
+
+
+</h:body>
+</html>

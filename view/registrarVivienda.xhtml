@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+
+
+		<script type="text/javascript"
+			src="https://maps.google.com/maps/api/js?key=AIzaSyBy2y5EZnZbwjun3cMj8TnjtqVf5t-hanA"></script>
+
+		<script type="text/javascript">
+
+			function colocarLatLng(event) {
+
+				console.log("(" + event.latLng.lat() + " , "
+						+ event.latLng.lng() + ")");
+				document.getElementById('form:txt_latitud').value = event.latLng
+						.lat();
+				document.getElementById('form:txt_longitud').value = event.latLng
+						.lng();
+			}
+		</script>
+
+		<div align="center">
+			<h:panelGrid columns="1" style="width:80%;height:300px">
+				<p:panel header="Crear viviendas">
+					<p:growl id="messages" showDetail="true" />
+
+					<p:gmap center="7.062026, -73.091349" zoom="15" type="ROADMAP"
+						style="width:100%;height:400px"
+						onPointClick="colocarLatLng(event);" widgetVar="map" />
+
+					<div align="center">
+						<h:panelGrid columns="2">
+
+							<h:outputLabel value="Ingresa la longitud :" for="txt_correo"></h:outputLabel>
+							<p:inputText id="txt_longitud"
+								value="#{controlador.vivienda.longitud}" required="true" />
+
+							<h:outputLabel value="Ingresa la latitud :" for="txt_correo"></h:outputLabel>
+							<p:inputText id="txt_latitud"
+								value="#{controlador.vivienda.latitud}" required="true" />
+
+							<h:outputLabel value="Ingresa la dirección exacta :"
+								for="txt_correo"></h:outputLabel>
+							<p:inputText id="txt_correo"
+								value="#{controlador.vivienda.direccionExacta}" required="true" />
+
+							<h:outputLabel value="Ingresa la descripción de la vivienda :"
+								for="txt_contraseña"></h:outputLabel>
+							<p:inputText id="txt_contraseña"
+								value="#{controlador.vivienda.descripcion}" required="true" />
+
+							<h:outputLabel value="Ingresa el método de pago:"
+								for="txt_contraseña"></h:outputLabel>
+							<p:inputText value="#{controlador.vivienda.metodoPago}"
+								required="true" />
+
+							<h:outputLabel value="Ingresa el precio:" for="txt_contraseña"></h:outputLabel>
+							<p:inputText value="#{controlador.vivienda.precio}"
+								required="true" />
+
+							<h:outputLabel value="Ingresa las reglas:" for="txt_contraseña"></h:outputLabel>
+							<p:inputText value="#{controlador.vivienda.reglas}"
+								required="true" />
+								
+							<div align="center">
+								<p:commandButton id="btn_add" value="Guardar vivienda"
+									update="form" action="#{controlador.crearVivienda_Web()}">
+								</p:commandButton>
+							</div>
+
+						</h:panelGrid>
+					</div>
+
+
+				</p:panel>
+			</h:panelGrid>
+		</div>
+
+	</h:form>
+
+
+	<div align="center">
+		<h:form id="dsa">
+			<p:commandButton id="btn_cerrar" value="Volver al perfil"
+				action="volver"></p:commandButton>
+		</h:form>
+	</div>
+
+
+</h:body>
+</html>
